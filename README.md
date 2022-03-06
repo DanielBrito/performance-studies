@@ -1,4 +1,4 @@
-# :chart_with_upwards_trend: Performance
+# :chart_with_upwards_trend: Performance Studies
 
 These experiments cover different tools and concepts related to web performance from my [self-directed](https://github.com/DanielBrito/self-learning) studies.
 
