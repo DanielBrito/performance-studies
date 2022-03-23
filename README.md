@@ -5,7 +5,7 @@ These experiments cover different tools and concepts related to web performance 
 ## :bookmark_tabs: Topics
 
 - Metrics:
-  - First Cntentful Paint (FCP)
+  - First Contentful Paint (FCP)
   - Largest Contentful Paint (LCP)
   - Cumulative Layout Shift (CLS)
 
