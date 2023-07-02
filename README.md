@@ -8,11 +8,17 @@ These experiments cover different tools and concepts related to web performance 
   - First Contentful Paint (FCP)
   - Largest Contentful Paint (LCP)
   - Cumulative Layout Shift (CLS)
-
 - Techiques:
   - Defering
   - Lazy Loading
   - Code Splitting
+- APM Services
+- Traces
+- Profiling
+- SLA/SLO/SLI
+- Log Management
+- Alerts
+- Monitors
 
 ## 🚀 Projects
 
@@ -32,3 +38,4 @@ These experiments cover different tools and concepts related to web performance 
 - [TinyPNG](https://tinypng.com/)
 - [ImageOptim](https://imageoptim.com/versions.html)
 - [Mozilla Observatory](https://observatory.mozilla.org/)
+- [Datadog](https://www.datadoghq.com/)

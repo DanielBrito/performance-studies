@@ -1,0 +1,55 @@
+1. csharp.d->conf.d
+
+init_config:
+
+instances:
+
+##Log section
+logs:
+
+  - type: file
+    path: "C:/Logs/Datadog.log"
+    service: DogsWorld
+    source: csharp
+    sourcecategory: sourcecode
+    # For multiline logs, if they start by the date with the format yyyy-mm-dd uncomment the following processing rule
+    #log_processing_rules:
+    #  - type: multi_line
+    #    name: new_log_start_with_date
+    #    pattern: \d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])
+	
+	
+2. NLog.config
+
+<?xml version="1.0" encoding="utf-8" ?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!--
+  See https://github.com/nlog/nlog/wiki/Configuration-file
+  for information on customizing logging rules and outputs.
+   -->
+  <targets async="true">
+    <!-- Write logs as Json into a file -->
+    <target name="json-file" xsi:type="File" fileName="C:\Logs\Datadog.log">
+      <layout xsi:type="JsonLayout">
+        <attribute name="date" layout="${date:format=yyyy-MM-ddTHH\:mm\:ss.fff}" />
+        <attribute name="level" layout="${level:upperCase=true}"/>
+        <attribute name="message" layout="${message}" />
+        <attribute name="exception" layout="${exception:format=ToString}" />
+      </layout>
+    </target>
+
+  </targets>
+  <rules>
+    <!-- Log all events to the json-file target -->
+    <logger name="*" writeTo="json-file" minlevel="Trace" />
+  </rules>
+</nlog>
+
+3. Controller usage
+
+private static NLog.Logger logger = LogManager.GetCurrentClassLogger();
+logger.Info("List of all Dogs is called successfully");
+logger.Warn("Dog updated with a warning message!");
+logger.Error("Dog deletion has error.");

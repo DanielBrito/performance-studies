@@ -1,0 +1,270 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "",
+        "version": "1.x",
+        "title": "BirdsWorld"
+    },
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/birds": {
+            "post": {
+                "tags": [
+                    "Birds"
+                ],
+                "summary": "Creates bird",
+                "description": "",
+                "operationId:": "createBird",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "breed": {
+                                    "type": "string"
+                                },
+                                "age": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Bird created",
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "examples": {
+                            "id": "1",
+                            "name": "Name 1",
+                            "breed": "Breed 1"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Birds"
+                ],
+                "summary": "Retrieves birds",
+                "description": "",
+                "operationId": "getAllBirds",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "x-hapi-options": {
+                    "auth": {
+                        "access": {
+                            "scope": []
+                        }
+                    }
+                },
+                "x-oad-type": "operation",
+                "responses": {
+                    "200": {
+                        "description": "Returns birds",
+                        "schema": {
+                            "x-oad-type": "object",
+                            "type": "object"
+                        },
+                        "examples": {
+                            "id": "1",
+                            "name": "Name 1",
+                            "breed": "Breed 1",
+                            "age": 1
+                        }
+                    },
+                    "404": {
+                        "description": "Birds not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/birds/{id}": {
+            "get": {
+                "tags": [
+                    "Birds"
+                ],
+                "summary": "Retrieves a bird",
+                "description": "",
+                "operationId": "getBirdById",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-oad-type": "parameter"
+                    }
+                ],
+                "x-hapi-options": {
+                    "auth": {
+                        "access": {
+                            "scope": []
+                        }
+                    }
+                },
+                "x-oad-type": "operation",
+                "responses": {
+                    "200": {
+                        "description": "Returns a bird",
+                        "schema": {
+                            "x-oad-type": "object",
+                            "type": "object"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "id": "1",
+                                "name": "Name 1",
+                                "breed": "Breed 1",
+                                "age": 1
+                            }   
+                        }
+                    },
+                    "404": {
+                        "description": "Bird not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Birds"
+                ],
+                "summary": "Update bird",
+                "description": "",
+                "operationId": "updateBird",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-oad-type": "parameter"
+                    },
+                    {
+                        "name": "payload",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "breed": {
+                                    "type": "string"
+                                },
+                                "age": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Bird updated",
+                        "schema": {
+                            "x-oad-type": "object",
+                            "type": "object"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "id": "1",
+                                "name": "Name 1",
+                                "breed": "Breed 1",
+                                "age": 1
+                            }   
+                        }
+                    },
+                    "404": {
+                        "description": "Bird not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Birds"
+                ],
+                "summary": "Delete bird",
+                "description": "",
+                "operationId": "deleteBird",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-oad-type": "parameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Bird deleted",
+                        "schema": {
+                            "x-oad-type": "object",
+                            "type": "object"
+                        }
+                    },
+                    "404": {
+                        "description": "Bird not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    }
+}
+
